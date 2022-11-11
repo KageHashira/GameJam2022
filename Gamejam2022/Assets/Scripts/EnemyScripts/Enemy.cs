@@ -22,7 +22,9 @@ public class Enemy : MonoBehaviour
     [HideInInspector] public Transform player;
     private NavMeshAgent agent;
 
-    private void Start() {
+    private bool isAggro = false;
+
+    private void Awake() {
         currentAttackTimer = attackCooldown;
         currentHealth = health;
         currentTime = roamTime;
@@ -60,17 +62,21 @@ public class Enemy : MonoBehaviour
         //If the player is within the AI's aggro range, targets the player. Otherwise, the AI will roam.
         if (player != null && Vector3.Distance(transform.position, player.position) <= aggroRange) {
             if (agent.destination != player.position) {
+                isAggro = true;
                 agent.SetDestination(player.position);
             }
         } else {
             if (currentTime <= 0) {
                 //AI will get a random point within maxRoamRange, then find the nearest spot on the navmesh to that point and set it's destination there.
+                isAggro = false;
                 Vector3 randomPoint = (Random.insideUnitSphere * maxRoamRange) + transform.position;
                 NavMesh.SamplePosition(randomPoint, out NavMeshHit hit, maxRoamRange, 1);
                 agent.SetDestination(hit.position);
                 currentTime = roamTime;
+            } else if (isAggro) {
+                isAggro = false;
+                agent.ResetPath();
             }
-            //TODO: Possibly make an else if here to see if the AI was previously targeting the player, then stop moving. Currently it continues to move toward's the player's last location even when unaggroed.
         }
     }
 
@@ -78,9 +84,9 @@ public class Enemy : MonoBehaviour
         if (currentAttackTimer <= 0) {
             if (collision.gameObject.CompareTag("Player")) {
                 //TODO: Implement health on the player to take damage similar to the comment below.
-                //gameObject.GetComponent<Health>().TakeDamage(attackDamage);
+                //collision.gameObject.GetComponent<Health>().TakeDamage(attackDamage);
 
-                if (statusEffect != null && Random.value < statusEffect.chanceToTrigger) {
+                if (statusEffect != null && Random.value <= statusEffect.chanceToTrigger) {
                     statusEffect.TriggerOnHit(collision.gameObject);
                 }
             }
