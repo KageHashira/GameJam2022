@@ -1,15 +1,18 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using System;
+
 public class BossHealth : Health
 {
-    public static Action onDamageTaken;
 
+    public override void Death()
+    {
+        throw new System.NotImplementedException();
+    }
     public override void DamageTake(int hitPoints)
     {
         base.DamageTake(hitPoints);
-        onDamageTaken();
-
+        if(currentHP == 0) Death();
     }
+    
 }

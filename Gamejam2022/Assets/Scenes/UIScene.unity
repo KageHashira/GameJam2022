@@ -763,6 +763,7 @@ GameObject:
   - component: {fileID: 183877662}
   - component: {fileID: 183877664}
   - component: {fileID: 183877663}
+  - component: {fileID: 183877665}
   m_Layer: 5
   m_Name: DeathCounter
   m_TagString: Untagged
@@ -831,6 +832,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 183877661}
   m_CullTransparentMesh: 1
+--- !u!114 &183877665
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 183877661}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 98cfa4a01f08946449c87c0a6171ec81, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  deathCounterText: {fileID: 193450350}
 --- !u!1 &193450348
 GameObject:
   m_ObjectHideFlags: 0
@@ -889,7 +903,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 234
+  m_text: 0
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -1245,9 +1259,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 250535729}
-  - component: {fileID: 250535730}
+  - component: {fileID: 250535731}
+  - component: {fileID: 250535732}
   m_Layer: 0
-  m_Name: asd
+  m_Name: player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1268,7 +1283,35 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &250535730
+--- !u!114 &250535731
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 250535727}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d681a503ff4aa04e913f9d1c0202fa3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: {fileID: 250535732}
+  onDeath:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 183877665}
+        m_TargetAssemblyTypeName: DeathDisplayer, Assembly-CSharp
+        m_MethodName: UpdateUI
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &250535732
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2382,9 +2425,9 @@ MonoBehaviour:
   m_HandleRect: {fileID: 0}
   m_Direction: 2
   m_MinValue: 0
-  m_MaxValue: 100
+  m_MaxValue: 1
   m_WholeNumbers: 0
-  m_Value: 17.3
+  m_Value: 0
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -5230,6 +5273,51 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 991108484}
   m_CullTransparentMesh: 1
+--- !u!1 &1004752495
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1004752497}
+  - component: {fileID: 1004752496}
+  m_Layer: 0
+  m_Name: RageMeterController
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1004752496
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1004752495}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ecfc82fbb7e75324cade57fd00cc9cad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxRagePoints: 15
+--- !u!4 &1004752497
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1004752495}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 2.4741323, y: 0.22429627, z: 3553.7195}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1029910872
 GameObject:
   m_ObjectHideFlags: 0
@@ -6234,6 +6322,51 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1210622972}
   m_CullTransparentMesh: 1
+--- !u!1 &1219377381
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1219377382}
+  - component: {fileID: 1219377383}
+  m_Layer: 0
+  m_Name: Boar
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1219377382
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1219377381}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.27060446, y: -1.0407605, z: 66.18563}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1219377383
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1219377381}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f6a11a079e68bb1429bd99d51a24e45a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHP: 100
 --- !u!1 &1221490675
 GameObject:
   m_ObjectHideFlags: 0
@@ -6393,6 +6526,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1276298816}
   - component: {fileID: 1276298817}
+  - component: {fileID: 1276298818}
   m_Layer: 5
   m_Name: BossHpBar
   m_TagString: Untagged
@@ -6473,6 +6607,20 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &1276298818
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1276298815}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 602656681234df0479438a8ac55a079d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sliderToUpdate: {fileID: 1276298817}
+  health: {fileID: 1549917182}
 --- !u!1 &1277932937
 GameObject:
   m_ObjectHideFlags: 0
@@ -6821,6 +6969,51 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1495696536}
   m_CullTransparentMesh: 1
+--- !u!1 &1549917180
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1549917181}
+  - component: {fileID: 1549917182}
+  m_Layer: 0
+  m_Name: boss
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1549917181
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1549917180}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.27060446, y: -1.0407605, z: 66.18563}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1549917182
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1549917180}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ad55f9f25aa82ea4dbbdb67cc7963970, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHP: 1000
 --- !u!1 &1553406141
 GameObject:
   m_ObjectHideFlags: 0
@@ -8495,7 +8688,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 602656681234df0479438a8ac55a079d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  slider: {fileID: 2040529212}
+  sliderToUpdate: {fileID: 2040529212}
+  health: {fileID: 250535732}
 --- !u!1 &2048049842
 GameObject:
   m_ObjectHideFlags: 0
