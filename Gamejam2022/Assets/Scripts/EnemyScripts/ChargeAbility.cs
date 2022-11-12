@@ -22,6 +22,7 @@ public class ChargeAbility : EnemyAbility
         Enemy enemyScript = gameObject.GetComponent<Enemy>();
         NavMeshAgent agent = gameObject.GetComponent<NavMeshAgent>();
         Vector3 playerPos = enemyScript.player.position;
+        playerPos.z = 0;
         enemyScript.sprite.GetComponent<SpriteRenderer>().color = Color.yellow;
         float angle = Mathf.Atan2(agent.destination.y - gameObject.transform.position.y, agent.destination.x - gameObject.transform.position.x) * Mathf.Rad2Deg;
         enemyScript.sprite.transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle));
@@ -30,13 +31,16 @@ public class ChargeAbility : EnemyAbility
 
         //Charges past the player until it hits a wall or reaches its charge length
         enemyScript.sprite.GetComponent<SpriteRenderer>().color = Color.red;
-        Vector3 direction = playerPos - transform.position;
-        Vector3 endPos = (direction / direction.magnitude) * chargeLength;
+        Vector3 startPos = transform.position;
+        startPos.z = 0;
+        Vector3 direction = (playerPos - startPos).normalized;
 
-        if (agent.Raycast(endPos, out NavMeshHit hit)) {
-            agent.SetDestination(hit.position);
+        int layerMask = 1 << 3; //Raycast should only be able to hit walls(index 3)
+        RaycastHit2D hit = Physics2D.Raycast(startPos, direction, chargeLength, layerMask);
+        if (hit) {
+            agent.SetDestination(hit.point);
         } else {
-            agent.SetDestination(direction);
+            agent.SetDestination(direction * chargeLength);
         }
 
         while (agent.pathPending) {
