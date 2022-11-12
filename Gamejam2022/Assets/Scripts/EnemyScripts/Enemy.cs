@@ -1,3 +1,4 @@
+using TreeEditor;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -23,6 +24,7 @@ public class Enemy : MonoBehaviour
     private NavMeshAgent agent;
 
     private bool isAggro = false;
+    private Vector3 nextWaypoint;
 
     private void Awake() {
         currentAttackTimer = attackCooldown;
@@ -45,11 +47,11 @@ public class Enemy : MonoBehaviour
         if (currentTime >= 0) currentTime -= Time.deltaTime;
         if (currentAttackTimer >= 0) currentAttackTimer -= Time.deltaTime;
 
-        //Rotate sprite to look at its destination
-        //TODO: Rotate sprite towards pathing rather than just end result
-        if (agent.destination != null && agent.remainingDistance > agent.stoppingDistance) {
-            float angle = Mathf.Atan2(agent.destination.y - transform.position.y, agent.destination.x - transform.position.x) * Mathf.Rad2Deg;
-            sprite.transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle));
+        //Rotate sprite to look towards it's next waypoint
+        if (agent.destination != null && agent.remainingDistance > agent.stoppingDistance && nextWaypoint != agent.path.corners[1]) {
+            nextWaypoint = agent.path.corners[1];
+            float angle = Vector2.SignedAngle(transform.right, agent.path.corners[1] - transform.position);
+            sprite.transform.rotation = Quaternion.Euler(0, 0, transform.localEulerAngles.z + angle);
         }
 
         //Check if an ability is currently being animated before roaming/chasing
