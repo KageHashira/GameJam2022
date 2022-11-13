@@ -47,6 +47,9 @@ TagManager:
   - name: InGame
     uniqueID: 1773203385
     locked: 0
+  - name: Rules
+    uniqueID: 1619638365
+    locked: 0
   - name: Menu
     uniqueID: 1399374519
     locked: 0
