@@ -9,5 +9,14 @@ public abstract class EnemyAbility : MonoBehaviour {
     public float aggroRange = 4f;
     [HideInInspector] public bool isUsingAbility = false;
 
-    public abstract void Start();
+    [HideInInspector] public Enemy enemyScript = null;
+    [HideInInspector] public NavMeshAgent agent = null;
+
+    public virtual void Start() {
+        enemyScript = gameObject.GetComponent<Enemy>();
+        agent = gameObject.GetComponent<NavMeshAgent>();
+        StartCoroutine(Ability());
+    }
+
+    public abstract IEnumerator Ability();
 }

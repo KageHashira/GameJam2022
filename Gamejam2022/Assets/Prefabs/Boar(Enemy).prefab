@@ -53,12 +53,20 @@ MonoBehaviour:
   attackCooldown: 1
   aggroRange: 10
   maxRoamRange: 10
-  roamTime: 10
+  roamTime: 5
   sprite: {fileID: 7718595739111016248}
   abilties:
   - {fileID: 6374381475607746384}
   statusEffect: {fileID: 0}
   player: {fileID: 0}
+  nSprite: {fileID: 148134851, guid: 893a340667940244fb148125f099a6f2, type: 3}
+  neSprite: {fileID: -2065720562, guid: 893a340667940244fb148125f099a6f2, type: 3}
+  eSprite: {fileID: -383809330, guid: 893a340667940244fb148125f099a6f2, type: 3}
+  seSprite: {fileID: 1947886784, guid: 893a340667940244fb148125f099a6f2, type: 3}
+  sSprite: {fileID: 920657103, guid: 893a340667940244fb148125f099a6f2, type: 3}
+  swSprite: {fileID: 1358936665, guid: 893a340667940244fb148125f099a6f2, type: 3}
+  wSprite: {fileID: -30255731, guid: 893a340667940244fb148125f099a6f2, type: 3}
+  nwSprite: {fileID: -143062991, guid: 893a340667940244fb148125f099a6f2, type: 3}
 --- !u!114 &6374381475607746384
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -87,7 +95,7 @@ NavMeshAgent:
   m_AgentTypeID: 0
   m_Radius: 0.5
   m_Speed: 3.5
-  m_Acceleration: 8
+  m_Acceleration: 100
   avoidancePriority: 50
   m_AngularSpeed: 120
   m_StoppingDistance: 1
@@ -96,7 +104,7 @@ NavMeshAgent:
   m_AutoRepath: 1
   m_Height: 1
   m_BaseOffset: 0.5
-  m_WalkableMask: 4294967295
+  m_WalkableMask: 5
   m_ObstacleAvoidanceType: 4
 --- !u!61 &5323668301985835627
 BoxCollider2D:
@@ -197,8 +205,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 5
-  m_Sprite: {fileID: 3625043607559282579, guid: 19fb86013d8c24d6cb8410c0aadf30fa, type: 3}
-  m_Color: {r: 0, g: 1, b: 0, a: 1}
+  m_Sprite: {fileID: 920657103, guid: 893a340667940244fb148125f099a6f2, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0

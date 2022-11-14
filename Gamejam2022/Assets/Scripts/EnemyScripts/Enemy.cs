@@ -21,6 +21,14 @@ public class Enemy : MonoBehaviour
     [SerializeField] private EnemyAbility[] abilties;
     [SerializeField] private StatusEffect statusEffect;
     [HideInInspector] public Transform player;
+    [SerializeField] private Sprite nSprite;
+    [SerializeField] private Sprite neSprite;
+    [SerializeField] private Sprite eSprite;
+    [SerializeField] private Sprite seSprite;
+    [SerializeField] private Sprite sSprite;
+    [SerializeField] private Sprite swSprite;
+    [SerializeField] private Sprite wSprite;
+    [SerializeField] private Sprite nwSprite;
     private NavMeshAgent agent;
 
     private bool isAggro = false;
@@ -50,8 +58,8 @@ public class Enemy : MonoBehaviour
         //Rotate sprite to look towards it's next waypoint
         if (agent.destination != null && agent.remainingDistance > agent.stoppingDistance && nextWaypoint != agent.path.corners[1]) {
             nextWaypoint = agent.path.corners[1];
-            float angle = Vector2.SignedAngle(transform.right, agent.path.corners[1] - transform.position);
-            sprite.transform.rotation = Quaternion.Euler(0, 0, transform.localEulerAngles.z + angle);
+            float angle = Vector2.SignedAngle(transform.up, agent.path.corners[1] - transform.position);
+            LookTowards(angle);
         }
 
         //Check if an ability is currently being animated before roaming/chasing
@@ -79,6 +87,27 @@ public class Enemy : MonoBehaviour
                 isAggro = false;
                 agent.ResetPath();
             }
+        }
+    }
+
+    //Given an angle(north is 0, west is 90 degrees, and east is -90 degrees), look towards that angle.
+    public void LookTowards(float angle) {
+        if (angle >= -22.5f && angle <= 22.5f) {
+            sprite.GetComponent<SpriteRenderer>().sprite = nSprite;
+        } else if (angle < -22.5 && angle > -67.5f) {
+            sprite.GetComponent<SpriteRenderer>().sprite = neSprite;
+        } else if (angle <= -67.5 && angle >= -112.5f) {
+            sprite.GetComponent<SpriteRenderer>().sprite = eSprite;
+        } else if (angle < -112.5 && angle > -157.5f) {
+            sprite.GetComponent<SpriteRenderer>().sprite = seSprite;
+        } else if (angle >= 157.5 || angle <= -157.5f) {
+            sprite.GetComponent<SpriteRenderer>().sprite = sSprite;
+        } else if (angle > 112.5 && angle < 157.5) {
+            sprite.GetComponent<SpriteRenderer>().sprite = swSprite;
+        } else if (angle >= 67.5 && angle <= 112.5f) {
+            sprite.GetComponent<SpriteRenderer>().sprite = wSprite;
+        } else if (angle > 22.5 && angle < 67.5f) {
+            sprite.GetComponent<SpriteRenderer>().sprite = nwSprite;
         }
     }
 
