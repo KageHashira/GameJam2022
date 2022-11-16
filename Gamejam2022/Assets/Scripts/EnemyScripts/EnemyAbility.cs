@@ -5,6 +5,7 @@ using UnityEngine.AI;
 [RequireComponent(typeof(Enemy))]
 public abstract class EnemyAbility : MonoBehaviour {
 
+    [SerializeField] private string abilityName = "New Ability";
     public float abilityCooldown = 2.5f;
     public float aggroRange = 4f;
     [HideInInspector] public bool isUsingAbility = false;

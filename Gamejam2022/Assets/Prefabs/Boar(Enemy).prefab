@@ -79,9 +79,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e331e209b84d6d74f8cefc6e20dfc761, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  abilityName: Roll
   abilityCooldown: 2.5
   aggroRange: 4
   isUsingAbility: 0
+  enemyScript: {fileID: 0}
+  agent: {fileID: 0}
   startupTime: 0.5
   chargeLength: 7
 --- !u!195 &4859764927662136515

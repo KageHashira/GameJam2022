@@ -212,7 +212,7 @@ GameObject:
   - component: {fileID: 4708960450730316944}
   - component: {fileID: 3614229578172118026}
   - component: {fileID: 3614229578172118027}
-  - component: {fileID: 4087140699341046462}
+  - component: {fileID: 4075093186073279020}
   - component: {fileID: 3614229578172118036}
   - component: {fileID: 4087140699341046460}
   m_Layer: 0
@@ -261,7 +261,7 @@ MonoBehaviour:
   abilties:
   - {fileID: 3614229578172118026}
   - {fileID: 3614229578172118027}
-  - {fileID: 4087140699341046462}
+  - {fileID: 4075093186073279020}
   statusEffect: {fileID: 0}
   player: {fileID: 0}
   nSprite: {fileID: 0}
@@ -284,6 +284,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fde7c7fa52ac31f4cbf9c088a7853123, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  abilityName: New Ability
   abilityCooldown: 10
   aggroRange: 4
   isUsingAbility: 0
@@ -312,6 +313,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e331e209b84d6d74f8cefc6e20dfc761, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  abilityName: Charge
   abilityCooldown: 2.5
   aggroRange: 4
   isUsingAbility: 0
@@ -319,7 +321,7 @@ MonoBehaviour:
   agent: {fileID: 0}
   startupTime: 0.5
   chargeLength: 7
---- !u!114 &4087140699341046462
+--- !u!114 &4075093186073279020
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -328,10 +330,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 3614229578172118035}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 242464c510d018541bbd327087728a40, type: 3}
+  m_Script: {fileID: 11500000, guid: e331e209b84d6d74f8cefc6e20dfc761, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  abilityCooldown: 1
+  abilityName: Roll
+  abilityCooldown: 2.5
   aggroRange: 3.5
   isUsingAbility: 0
   enemyScript: {fileID: 0}
