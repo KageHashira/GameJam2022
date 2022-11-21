@@ -13,6 +13,9 @@ public class PlayerMovement : MonoBehaviour
     public float speed = 6.2f;
     public Rigidbody2D RB;
     public Weapons Weapon;
+    public barrelThrow barrelScript;
+    public float barrelshootRate = 0f;
+
 
     Vector2 movedirection;
     Vector2 mouseposition;
@@ -77,8 +80,35 @@ public class PlayerMovement : MonoBehaviour
 
         if(Input.GetMouseButtonDown(0))
         {
-            Weapon.Fire();
+            if(Weapon.bulletPrefab.tag == "Barrel")
+            {
+                if (barrelshootRate <= 0)
+                {
+                    Weapon.Fire();
+                    barrelshootRate = 3f;
+                }
+
+            }
+            else
+            {
+                Weapon.Fire();
+            }
+            
         }
+
+        if(Weapon.bulletPrefab.tag == "Barrel")
+        {
+            if(barrelshootRate >0)
+            {
+                barrelshootRate -= Time.deltaTime;
+            }
+
+        }
+
+       /* if (Input.GetMouseButtonDown(1)) 
+        {
+            barrelScript.barrelfire();
+        }*/
 
         //movedirection = new Vector2(movement.x, movement.y).normalized;
         mouseposition = Camera.main.ScreenToWorldPoint(Input.mousePosition);

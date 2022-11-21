@@ -6,7 +6,7 @@ public class WeaponManager : MonoBehaviour
 {
     [SerializeField] private GameObject Bullet1;
     [SerializeField] private GameObject Bullet2;
-    [SerializeField] private GameObject Bullet3;
+    
 
     private Weapons weaponscipt;
     private SpriteRenderer SR;
@@ -35,10 +35,7 @@ public class WeaponManager : MonoBehaviour
         {
             SetWeapon(2);
         }
-        else if (Input.GetKeyDown(KeyCode.Alpha3))       //Number 3 on keyboard
-        {
-            SetWeapon(3);
-        }
+       
     }
 
     void SetWeapon(int WeaponID)
@@ -53,10 +50,7 @@ public class WeaponManager : MonoBehaviour
                 weaponscipt.SetBulletPrefab(Bullet2);
                 ChancePlayerColor(Color.green);
                 break;
-            case 3:
-                weaponscipt.SetBulletPrefab(Bullet3);
-                ChancePlayerColor(Color.cyan);
-                break;
+            
 
         }
     }
