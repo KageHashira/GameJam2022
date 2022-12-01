@@ -124,7 +124,7 @@ public class Enemy : MonoBehaviour
         }
     }
 
-    private void TakeDamage(int damageAmount) {
+    public void TakeDamage(int damageAmount) {
         currentHealth -= damageAmount;
         if (currentHealth <= 0) {
             Destroy(gameObject);
