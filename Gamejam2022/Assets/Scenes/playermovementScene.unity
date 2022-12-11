@@ -4641,6 +4641,8 @@ MonoBehaviour:
   speed: 4
   RB: {fileID: 1082742730}
   Weapon: {fileID: 1159347265}
+  barrelScript: {fileID: 1159347266}
+  barrelshootRate: 0
   dashspeed: 8
   dashlength: 0.5
   dashcooldown: 1
@@ -4856,7 +4858,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Bullet1: {fileID: 6870870103345731937, guid: f027f410c26a3144687995ed805fc096, type: 3}
   Bullet2: {fileID: 6870870103345731937, guid: 56c1d10e5e7990c47bf974a8ae939185, type: 3}
-  Bullet3: {fileID: 6870870103345731937, guid: e00d073806563024fb957a085fe65c98, type: 3}
 --- !u!58 &1082742735
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -5129,6 +5130,7 @@ GameObject:
   - component: {fileID: 1159347261}
   - component: {fileID: 1159347262}
   - component: {fileID: 1159347265}
+  - component: {fileID: 1159347266}
   m_Layer: 0
   m_Name: Weapon
   m_TagString: Untagged
@@ -5219,6 +5221,21 @@ MonoBehaviour:
   bulletPrefab: {fileID: 6870870103345731937, guid: f027f410c26a3144687995ed805fc096, type: 3}
   firePoint: {fileID: 258570621}
   fireforce: 20
+--- !u!114 &1159347266
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1159347260}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a470b5d47bf20e84db4448ed8140d366, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  barrelPrefab: {fileID: 6870870103345731937, guid: 56c1d10e5e7990c47bf974a8ae939185, type: 3}
+  speed: 0.5
+  firePoint: {fileID: 258570621}
 --- !u!1001 &1160255312
 PrefabInstance:
   m_ObjectHideFlags: 0

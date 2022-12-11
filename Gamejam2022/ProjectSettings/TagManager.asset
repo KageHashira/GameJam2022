@@ -7,6 +7,8 @@ TagManager:
   - Collectables
   - Enemy
   - Wall
+  - Barrel
+  - Bullet
   layers:
   - Default
   - TransparentFX
